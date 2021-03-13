@@ -53,3 +53,6 @@ corrplot::corrplot(cortable, method = c("number"), is.corr = FALSE)
 
 # Matriz de correlação (shade)
 corrplot::corrplot(cortable, method = c("shade"), is.corr = FALSE)
+
+# Matriz de correlação (ellipse)
+corrplot::corrplot(cortable, method = c("ellipse"), is.corr = FALSE)
