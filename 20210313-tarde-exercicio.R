@@ -54,7 +54,7 @@ data <- read_excel(
     "numeric"
   )
 )
-data
+#data
 
 #
 # PASSO 2 - Verificar se os dados são numéricos
@@ -64,7 +64,7 @@ str(table)
 #
 # PASSO 3 - Verificar se há dados faltantes
 #
-is.na(data)
+#is.na(data)
 sum(is.na(data))
 
 #
