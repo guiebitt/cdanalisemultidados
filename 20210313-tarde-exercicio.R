@@ -54,7 +54,7 @@ data <- read_excel(
     "numeric"
   )
 )
-#data
+View(data)
 
 #
 # PASSO 2 - Verificar se os dados são numéricos
@@ -72,7 +72,7 @@ sum(is.na(data))
 #           usando as libs zoo e data.table
 #
 data <- na.aggregate(data)
-data
+View(data)
 
 #
 # PASSO 5 - Criar tabela de correlação
