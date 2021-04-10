@@ -21,8 +21,8 @@ train <- train[-which(train$Embarked == ""),]
 test <- test[-which(is.na(test$Fare)),]
 
 # Colocando a mediana para valores faltantes
-train$Age[is.na(train$Age)] <- median(train$Age, na.rm = T)
-test$Age[is.na(test$Age)] <- median(test$Age, na.rm = T)
+train$Age[is.na(train$Age)] <- median(train$Age, na.rm=T)
+test$Age[is.na(test$Age)] <- median(test$Age, na.rm=T)
 
 # Remover variáveis não necessárias
 train <- subset(train, select = -c(Cabin, PassengerId, Ticket, Name))
@@ -38,7 +38,7 @@ for (j in c("Survived","Pclass","Sex","Embarked")){
 
 # Correlação das variáveis
 library(dlookr)
-correlate(train, )
+correlate(train)
 plot_correlate(train)
 
 # Removendo linhas com dados ausentes
@@ -49,8 +49,15 @@ table(train$Survived)
 prop.table(table(train$Survived))
 
 # Modelo 1
-mod1 <- glm(Survived ~ ., data = train, family = binomial(link = "logit"))
+mod1 <- glm(formula = Survived ~ ., data = train, family = "binomial")
 mod1
 summary(mod1)
 
-# É possível identificar as variáveis significantes: 
+# É possível identificar as variáveis significantes: Pclass2, Pclass3, Sexmale, Age e SibSp
+
+exp(mod1$coefficients)
+
+# Algumas análises:
+# A cada sobrevivente, 0.40 pessoas da segunda classe sobreviveram
+# A cada sobrevivente, 0.11 pessoas da terceira classe sobreviveram
+# A cada sobrevivente, 0.066 homens sobreviveram
